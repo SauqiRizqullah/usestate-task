@@ -4,7 +4,8 @@ import { useState } from "react"
 
 export default function TaskList({
     todos,
-    onChangeTodo
+    onChangeTodo,
+    onDeleteTodo
 }){
     return (
         <div>
@@ -14,6 +15,7 @@ export default function TaskList({
                         <Task 
                         todo={todo}
                         onChange={onChangeTodo}
+                        onDelete={onDeleteTodo}
                         />
 
                     </li>
@@ -23,7 +25,7 @@ export default function TaskList({
     )
 }
 
-function Task({ todo, onChange}){
+function Task({ todo, onChange, onDelete}){
 
     const [isEditing, setIsEditing] = useState(false)
     
@@ -72,7 +74,7 @@ function Task({ todo, onChange}){
                 }}
                 />
                 {todoContent}
-                <button>
+                <button onClick={() => onDelete(todo.id)}>
                     Delete
                 </button>
             </label>

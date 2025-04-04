@@ -36,6 +36,14 @@ export default function Home() {
     }))
   }
 
+  function handleDeleteTodo(todoId){
+    setTodos(
+      todos.filter(t => t.id !== todoId)
+    )
+  }
+
+  // function handleDeleteTodo()
+
   return (
     <div>
       <div className="justify-self-center flex flex-col gap-3 mt-40">
@@ -46,6 +54,7 @@ export default function Home() {
           <TaskList 
             todos={todos}
             onChangeTodo={handleChangeTodo}
+            onDeleteTodo={handleDeleteTodo}
           />
         </div>
       </div>
